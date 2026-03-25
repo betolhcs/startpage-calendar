@@ -1,88 +1,229 @@
 /* Css pra configuração geral do calendario*/
-body{
+body {
     background-color: #111;
     color: #eee;
+    margin: 0;
+    padding: 16px 12px;
 }
-#calendario-titulo{
+#calendario-titulo {
     text-align: center;
 }
-#calendario-pequeno{
+#calendario-pequeno {
     margin-right: auto;
     margin-left: auto;
     background-color: #222;
     color: #ddd;
+    width: 100%;
+    max-width: 320px;
+    font-size: 13px;
+    table-layout: fixed;
 }
-table{
+#calendario-pequeno th,
+#calendario-pequeno td {
+    padding: 4px 3px;
+    text-align: center;
+}
+
+/* Waveform background */
+.calendario-section {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+.calendario-content {
+    position: relative;
+    z-index: 1;
+    padding: 8px 0;
+}
+#waveform-display {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "DejaVu Sans Mono", "JetBrains Mono", "Fira Code", monospace;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 0;
+    white-space: pre;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    font-variant-ligatures: none;
+}
+table {
     border: 1px solid #ddd;
 }
-.dias-da-semana{
+.dias-da-semana {
     color: #eee;
 }
-.form-inline{
+.calendario-botoes {
+    text-align: center;
+    margin-top: 10px;
+}
+.form-inline {
     text-align: center;
     margin-top: -10px;
 }
-ul{
+.form-inline select {
+    background-color: #111;
+    color: #ddd;
+    border: 1px solid #444;
+    padding: 2px 4px;
+}
+ul {
     list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
 /* Css para a barra de pesquisa do google */
-.search-form{
+.search-section {
+    text-align: center;
+    margin-top: 10px;
+    padding: 0 12px;
+}
+.search-form {
     margin-top: 10px;
     color: #ddd;
     background: none;
     transition: border 0.2s ease;
-    padding:8px;
-    border:none;
-    border-bottom:3px solid #222;
-    width:30%
+    padding: 8px;
+    border: none;
+    border-bottom: 3px solid #222;
+    width: 30%;
+    min-width: 200px;
+    max-width: 500px;
+    font-size: 14px;
 }
-.search-form:focus{
+.search-form:focus {
     outline: 0;
     border: 0;
     border-bottom: 3px solid #ddd;
 }
 
 /* Css para os links */
-.link-container{
-    display: inline-block;
-    vertical-align: top;
+.links-section {
+    text-align: center;
+    padding: 0 12px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 32px;
 }
-.link{
+.link-container {
+    vertical-align: top;
+    min-width: 140px;
+}
+.link {
     position: relative;
     color: #999;
     text-decoration: none;
     line-height: 22px;
-    transition: color .2s ease-in-out;
+    transition: color 0.2s ease-in-out;
 }
 .link:hover {
     color: #eee;
     background-color: #0c0c0c;
 }
 .link:before,
-.link:after{
-    content: '';
+.link:after {
+    content: "";
     position: absolute;
-    transition: transform .2s ease-in-out;
+    transition: transform 0.2s ease-in-out;
 }
 
 /* Css para os botões de proximo e anterior*/
-#anterior, #proximo, #hoje{
+#anterior,
+#proximo,
+#hoje {
     color: #ddd;
-	background: none;
-	border-radius: 0;
-	padding: 0.3em 0.7em;
-	transition: background-color .2s, box-shadow .2s, color .2s;
-	border: #ddd solid 2px;
+    background: #111;
+    border-radius: 0;
+    padding: 0.3em 0.7em;
+    transition:
+        background-color 0.2s,
+        box-shadow 0.2s,
+        color 0.2s;
+    border: #ddd solid 2px;
+    font-size: 14px;
+    cursor: pointer;
 }
-#anterior:hover, #proximo:hover, #hoje:hover{
-    color:#111;
+#anterior:hover,
+#proximo:hover,
+#hoje:hover {
+    color: #111;
     background-color: #ddd;
 }
 
 /* Css para o selecionador de opções*/
-
-option{
+option {
     background-color: #111;
     color: #ddd;
+}
+
+/* --- Responsividade --- */
+
+/* Telas pequenas (celular) */
+@media (max-width: 480px) {
+    body {
+        padding: 8px 4px;
+    }
+    #calendario-pequeno {
+        font-size: 13px;
+    }
+    #calendario-pequeno th,
+    #calendario-pequeno td {
+        padding: 5px 2px;
+    }
+    .search-form {
+        width: 85%;
+    }
+    .links-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+    }
+    .link-container {
+        min-width: unset;
+        width: 100%;
+        max-width: 200px;
+    }
+    #anterior,
+    #proximo,
+    #hoje {
+        padding: 0.4em 0.6em;
+        font-size: 13px;
+    }
+    #waveform-display {
+        font-size: 8px;
+    }
+}
+
+/* Telas médias (tablet) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .search-form {
+        width: 60%;
+    }
+    .links-section {
+        gap: 8px 24px;
+    }
+    #waveform-display {
+        font-size: 10px;
+    }
+}
+
+/* Telas grandes */
+@media (min-width: 769px) {
+    body {
+        padding: 20px 24px;
+    }
+    .links-section {
+        gap: 12px 48px;
+    }
 }
