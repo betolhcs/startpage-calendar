@@ -1,87 +1,145 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<div>
-    <div>
-        <h3 id="calendario-titulo"></h3>
-        <table  id="calendario-pequeno" class="calendario">
-            <thead>
-            <tr class="dias-da-semana">
-                <th>Dom</th>
-                <th>Seg</th>
-                <th>Ter</th>
-                <th>Qua</th>
-                <th>Qui</th>
-                <th>Sex</th>
-                <th>Sab</th>
-            </tr>
-            </thead>
-            <tbody id="calendario-corpo">
-            </tbody>
-        </table>
-        <div style="text-align: center; margin-top: 10px;">
-            <button id="anterior" onclick="anterior()">Anterior</button>
-            <button id="hoje" onclick="hoje()">Hoje</button>
-            <button id="proximo" onclick="proximo()">Próximo</button>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Home</title>
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="calendario-section">
+            <pre id="waveform-display"></pre>
+            <div class="calendario-content">
+                <h3 id="calendario-titulo"></h3>
+                <table id="calendario-pequeno" class="calendario">
+                    <thead>
+                        <tr class="dias-da-semana">
+                            <th>Dom</th>
+                            <th>Seg</th>
+                            <th>Ter</th>
+                            <th>Qua</th>
+                            <th>Qui</th>
+                            <th>Sex</th>
+                            <th>Sab</th>
+                        </tr>
+                    </thead>
+                    <tbody id="calendario-corpo"></tbody>
+                </table>
+                <div class="calendario-botoes">
+                    <button id="anterior" onclick="anterior()">Anterior</button>
+                    <button id="hoje" onclick="hoje()">Hoje</button>
+                    <button id="proximo" onclick="proximo()">Próximo</button>
+                </div>
+                <br />
+                <form class="form-inline">
+                    <label for="month">Pular para: </label>
+                    <select name="month" id="month" onchange="jump()">
+                        <!--Lista de meses e de anos, gera os elementos por js-->
+                    </select>
+                    <label for="year"></label>
+                    <select name="year" id="year" onchange="jump()"></select>
+                </form>
+            </div>
         </div>
-        <br/>
-        <form class="form-inline">
-            <label for="month">Jump To: </label>
-            <select name="month" id="month" onchange="jump()"> <!--Lista de meses e de anos, gera os elementos por js-->
-            </select>
-            <label for="year"></label>
-            <select name="year" id="year" onchange="jump()">
-            </select>
-        </form>
-    </div>
-</div>
 
-<!-- Código abaixo retirado da Start Page -->
+        <!-- Código abaixo retirado da Start Page -->
 
-<div style="text-align: center; margin-top: 10px;">
-    <form method="get" action="https://www.google.com/search">
-        <input class="search-form" type="text" name="q" placeholder="Procurando alguma coisa?"/>
-    </form>
-</div>
-<div style="text-align: center;">
-    <div class="link-container">
-        <ul>
-            <li><h4>Entretenimento</h4></li>
-            <li><a class="link" href="https://www.youtube.com/feed/subscriptions">YouTube</a></li>
-            <li><a class="link" href="https://www.netflix.com/browse">Netflix</a></li>
-            <li><a class="link" href="https://www.reddit.com/">Reddit</a></li>
-            <li><a class="link" href="https://www.crunchyroll.com/">Crunchyroll</a></li>
-            <li><a class="link" href="https://www.twitch.tv/">Twitch</a></li>
-        </ul>
-    </div>
-    <div class="link-container">
-        <ul>
-            <li><h4>Comunicação</h4></li>
-            <li><a class="link" href="https://mail.google.com/">Gmail</a></li>
-            <li><a class="link" href="https://mail.protonmail.com/login">ProtonMail</a></li>
-            <li><a class="link" href="https://web.whatsapp.com/">Whatsapp</a></li>
-        </ul>
-    </div>
-    <div class="link-container">
-        <ul>
-            <li><h4>Trabalho/Estudos</h4></li>
-            <li><a class="link" href="https://aprender.unb.br/">Aprender</a></li>
-            <li><a class="link" href="https://aprender3.unb.br/">Aprender3</a></li>
-            <li><a class="link" href="https://moodle.mat.unb.br/">MoodleMat</a></li>
-            <li><a class="link" href="https://slack.com/intl/pt-br/">Slack</a></li>
-            <li><a class="link" href="https://mega.nz/fm">Mega</a></li>
-            <li><a class="link" href="https://github.com/">GitHub</a></li>
-        </ul>
-    </div>
-</div>
+        <div class="search-section">
+            <form method="get" action="https://www.google.com/search">
+                <input
+                    class="search-form"
+                    type="text"
+                    name="q"
+                    placeholder="Procurando alguma coisa?"
+                />
+            </form>
+        </div>
+        <div class="links-section">
+            <div class="link-container">
+                <ul>
+                    <li><h4>Entretenimento</h4></li>
+                    <li>
+                        <a
+                            class="link"
+                            href="https://www.youtube.com/feed/subscriptions"
+                            >YouTube</a
+                        >
+                    </li>
+                    <li>
+                        <a class="link" href="https://www.netflix.com/browse"
+                            >Netflix</a
+                        >
+                    </li>
+                    <li>
+                        <a class="link" href="https://www.reddit.com/"
+                            >Reddit</a
+                        >
+                    </li>
+                    <li>
+                        <a class="link" href="https://www.crunchyroll.com/"
+                            >Crunchyroll</a
+                        >
+                    </li>
+                    <li>
+                        <a class="link" href="https://www.twitch.tv/">Twitch</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="link-container">
+                <ul>
+                    <li><h4>Comunicação</h4></li>
+                    <li>
+                        <a class="link" href="https://mail.google.com/"
+                            >Gmail</a
+                        >
+                    </li>
+                    <li>
+                        <a class="link" href="https://mail.protonmail.com/login"
+                            >ProtonMail</a
+                        >
+                    </li>
+                    <li>
+                        <a class="link" href="https://web.whatsapp.com/"
+                            >Whatsapp</a
+                        >
+                    </li>
+                </ul>
+            </div>
+            <div class="link-container">
+                <ul>
+                    <li><h4>Trabalho/Estudos</h4></li>
+                    <li>
+                        <a class="link" href="https://aprender.unb.br/"
+                            >Aprender</a
+                        >
+                    </li>
+                    <li>
+                        <a class="link" href="https://aprender3.unb.br/"
+                            >Aprender3</a
+                        >
+                    </li>
+                    <li>
+                        <a class="link" href="https://moodle.mat.unb.br/"
+                            >MoodleMat</a
+                        >
+                    </li>
+                    <li>
+                        <a class="link" href="https://slack.com/intl/pt-br/"
+                            >Slack</a
+                        >
+                    </li>
+                    <li><a class="link" href="https://mega.nz/fm">Mega</a></li>
+                    <li>
+                        <a class="link" href="https://github.com/">GitHub</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
-<script src="calendario.js"></script>
-</body>
+        <script src="calendario.js"></script>
+        <script src="waveform.js"></script>
+    </body>
 </html>
