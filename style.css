@@ -4,6 +4,7 @@ body {
     color: #eee;
     margin: 0;
     padding: 16px 12px;
+    overflow-x: hidden;
 }
 #calendario-titulo {
     text-align: center;
