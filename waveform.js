@@ -172,9 +172,12 @@
     });
 
     // --- Init ---
-    measureGrid();
-    requestAnimationFrame(animate);
-    requestAnimationFrame(function () {
-        display.style.opacity = '1';
+    document.fonts.ready.then(function () {
+        measureGrid();
+        requestAnimationFrame(animate);
+        requestAnimationFrame(function () {
+            display.style.opacity = '1';
+        });
     });
+
 })();
